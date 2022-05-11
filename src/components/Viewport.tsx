@@ -22,19 +22,30 @@ function Viewport() {
         <directionalLight position={[15, 20, 25]} intensity={1} />
         <TransformControls object={mesh} mode="scale" />
         {data && (
-          <mesh ref={mesh} position={[0, 0, 0]} scale={1}>
+          <mesh
+            ref={mesh}
+            position={[0, 0, 0]}
+            scale={1}
+            onUpdate={(obj) => console.log('update mesh')}
+            matrixAutoUpdate={true}
+          >
             <meshPhongMaterial
               attach="material"
               color={parseInt(data.color, 16)}
               side={THREE.DoubleSide}
+              needsUpdate={true}
             />
-            <bufferGeometry>
+            <bufferGeometry
+              name={data.name}
+              onUpdate={(obj) => console.log('update geo')}
+            >
               {data.index && (
                 <bufferAttribute
                   array={new Uint32Array(data.index)}
                   attach="index"
                   count={data.index.length}
                   itemSize={1}
+                  needsUpdate={true}
                 />
               )}
               <bufferAttribute
@@ -42,18 +53,21 @@ function Viewport() {
                 count={data.position.length / 3}
                 itemSize={3}
                 array={new Float32Array(data.position)}
+                needsUpdate={true}
               />
               <bufferAttribute
                 attach="attributes-normal"
                 count={data.normal.length / 3}
                 itemSize={3}
                 array={new Float32Array(data.normal)}
+                needsUpdate={true}
               />
               <bufferAttribute
                 attach="attributes-uv"
                 count={data.uv.length / 2}
                 itemSize={2}
                 array={new Float32Array(data.uv)}
+                needsUpdate={true}
               />
             </bufferGeometry>
           </mesh>

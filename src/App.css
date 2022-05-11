@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .navbar {
@@ -47,6 +48,47 @@ a:hover,
   overflow: hidden;
 }
 
+.editor-form {
+  position: absolute;
+  left: 1.5rem;
+  top: 4rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #1d1c20;
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+
+input[type='color'] {
+  margin-left: 0.5rem;
+}
+
+.submit,
+.delete {
+  margin-top: 1rem;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 0.3rem;
+  transition: background-color 0.1s ease;
+}
+
+.submit {
+  background-color: #7631a5;
+}
+
+.delete {
+  background-color: #c92167;
+}
+
+.submit:hover {
+  background-color: #61238a;
+}
+
+.delete:hover {
+  background-color: #ad1c58;
+}
+
 .model-list {
   padding: 0;
   margin: 0;
@@ -59,4 +101,15 @@ a:hover,
   margin: 0.5rem 0;
   text-decoration: underline;
   list-style: none;
+}
+
+.result-message {
+  background-color: #7631a5;
+  padding: 1rem;
+  position: absolute;
+  z-index: 1;
+  top: 3rem;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
 }

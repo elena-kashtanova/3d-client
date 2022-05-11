@@ -33,7 +33,7 @@ function EditorPage() {
       });
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const key = e.target.name;
     let value;
 
@@ -45,12 +45,14 @@ function EditorPage() {
     setData(updatedData);
   };
 
-  const handleTransform = (updateData: Partial<IModelContext>) => {
+  const handleTransform = (updateData: Partial<IModelContext>): void => {
     const newData = Object.assign({}, data, updateData);
     setData(newData);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
     setMessage('Saving...');
 
@@ -67,6 +69,7 @@ function EditorPage() {
           throw new Error(res.statusText);
         }
       } catch (error) {
+        setMessage(null);
         if (error instanceof Error) {
           setError(error.message);
         } else {
@@ -132,7 +135,7 @@ function EditorPage() {
                 type="color"
                 name="color"
                 value={data.color.replace('0x', '#')}
-                onChange={handleChange}
+                onChange={handleInputChange}
               ></input>
             </label>
             <button type="submit" className="submit">

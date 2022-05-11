@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 interface IModelContext {
-  id?: string;
+  id: string;
   name: string;
   type: string;
   color: string;

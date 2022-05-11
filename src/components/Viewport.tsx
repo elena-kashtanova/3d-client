@@ -14,7 +14,7 @@ function Viewport({ handleTransform }: Props) {
   // Get access to the Mesh object
   const mesh = useRef<THREE.Mesh>(null!);
 
-  const handleMeshTransform = (e: THREE.Event | undefined) => {
+  const handleMeshTransform = (e: THREE.Event | undefined): void => {
     mesh.current.geometry.applyMatrix4(mesh.current.matrixWorld);
     mesh.current.scale.set(1, 1, 1);
     const attributes = mesh.current.geometry.attributes;

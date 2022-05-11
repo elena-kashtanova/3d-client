@@ -15,10 +15,6 @@ async function getData(url: string) {
 async function updateModel(modelData: IModelContext) {
   const { id } = modelData;
 
-  const updateData = Object.assign({}, modelData);
-  // typeorm doesn't accept primary keys as update data
-  delete updateData.id;
-
   const url = `${process.env.REACT_APP_API_URL}/models/${id}`;
   const response = await fetch(url, {
     method: 'PUT',

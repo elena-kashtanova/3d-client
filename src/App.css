@@ -103,7 +103,9 @@ input[type='color'] {
   list-style: none;
 }
 
-.result-message {
+.result-message,
+.error-message,
+.loading-message {
   background-color: #7631a5;
   padding: 1rem;
   position: absolute;
@@ -112,4 +114,8 @@ input[type='color'] {
   border-radius: 5px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.error-message {
+  background-color: rgb(211, 57, 90);
 }

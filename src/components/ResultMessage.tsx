@@ -1,9 +1,5 @@
 function ResultMessage({ text }: { text: string }) {
-  return (
-    <div>
-      <p className="result-message">{text}</p>
-    </div>
-  );
+  return <p className="result-message">{text}</p>;
 }
 
 export { ResultMessage };

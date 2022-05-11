@@ -1,5 +1,7 @@
 function ErrorMessage({ errorMessage }: { errorMessage: string }) {
-  return <h1>{`Something went wrong: ${errorMessage}`}</h1>;
+  return (
+    <p className="error-message">{`Something went wrong: ${errorMessage}`}</p>
+  );
 }
 
 export { ErrorMessage };

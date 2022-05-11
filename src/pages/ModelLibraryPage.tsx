@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ModelList } from '../components/ModelList';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { LoadingMessage } from '../components/LoadingMessage';
+import { getData } from '../utils/apiUtils';
 
 function ModelLibraryPage() {
   const [data, setData] = useState([]);
@@ -11,13 +12,7 @@ function ModelLibraryPage() {
   useEffect(() => {
     const url = `${process.env.REACT_APP_API_URL}/models`;
 
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}`);
-        }
-        return response.json();
-      })
+    getData(url)
       .then((data) => {
         setData(data);
         setError(null);

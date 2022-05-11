@@ -29,7 +29,7 @@ UPDATE: Fixed by resetting the scale of the mesh back to one after transformatio
 If the color is changed and then the mesh is transformed, the color reverts back to the original
 
 ## Opportunities for improvement
-- Fix the bug on color update
+- Fix the bug on color update (UPDATE: Fixed)
 - If a model is based on a primitive, use an appropriate class to load and edit it
 - Tests to make sure the UI is working correctly
 - Use aliases for imports

@@ -26,7 +26,7 @@ function Viewport({ handleTransform }: Props) {
 
   const debouncedHandleMeshTransform = useMemo(
     () => debounce(handleMeshTransform, 1000),
-    [],
+    [data],
   );
 
   return (

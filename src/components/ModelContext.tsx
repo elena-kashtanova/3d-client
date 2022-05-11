@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 interface IModelContext {
-  id: string;
+  id?: string;
   name: string;
   type: string;
   color: string;
@@ -14,4 +14,4 @@ interface IModelContext {
 
 const ModelContext = createContext<IModelContext | null>(null);
 
-export { ModelContext };
+export { ModelContext, type IModelContext };

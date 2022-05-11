@@ -36,8 +36,13 @@ a:hover,
   align-items: center;
 }
 
-.content {
+.content,
+.viewport {
   padding: 1rem;
+}
+
+.viewport {
+  height: 100%;
 }
 
 .model-list {

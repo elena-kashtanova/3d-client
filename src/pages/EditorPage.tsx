@@ -2,9 +2,12 @@ import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { LoadingMessage } from '../components/LoadingMessage';
+import { Viewport } from '../components/Viewport';
 import { getData } from '../utils/apiUtils';
+import { ModelContext } from '../components/ModelContext';
 
 function EditorPage() {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
@@ -14,10 +17,11 @@ function EditorPage() {
 
     getData(url)
       .then((data) => {
-        console.log(data);
+        setData(data);
         setError(null);
       })
       .catch((err) => {
+        setData(null);
         setError(err.message);
       })
       .finally(() => {
@@ -34,6 +38,9 @@ function EditorPage() {
       </nav>
       {loading && <LoadingMessage />}
       {error && <ErrorMessage errorMessage={error} />}
+      <ModelContext.Provider value={data}>
+        {data && <Viewport />}
+      </ModelContext.Provider>
     </div>
   );
 }

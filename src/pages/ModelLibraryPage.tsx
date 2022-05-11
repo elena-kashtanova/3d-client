@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ModelList } from '../components/ModelList';
+import { ErrorMessage } from '../components/ErrorMessage';
+import { LoadingMessage } from '../components/LoadingMessage';
 
 function ModelLibraryPage() {
   const [data, setData] = useState([]);
@@ -31,8 +33,8 @@ function ModelLibraryPage() {
 
   return (
     <main className="content">
-      {loading && <p>Loading...</p>}
-      {error && <h1>{`Something went wrong - ${error}`}</h1>}
+      {loading && <LoadingMessage />}
+      {error && <ErrorMessage errorMessage={error} />}
       {data && <ModelList data={data} />}
     </main>
   );

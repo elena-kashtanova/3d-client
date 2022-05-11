@@ -16,6 +16,7 @@ function Viewport({ handleTransform }: Props) {
 
   const handleMeshTransform = (e: THREE.Event | undefined) => {
     mesh.current.geometry.applyMatrix4(mesh.current.matrixWorld);
+    mesh.current.scale.set(1, 1, 1);
     const attributes = mesh.current.geometry.attributes;
     const position = Array.from(attributes.position.array);
     const normal = Array.from(attributes.normal.array);

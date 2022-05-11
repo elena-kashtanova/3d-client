@@ -24,6 +24,5 @@ When the mesh is transformed and the changes are applied to the matrix, there's 
 It might be an issue due to information about scale not being used in the model data. Fixing it would require changing the database model.
 
 ## Opportunities for improvement
-- Fix the rendering bug which occurs after the transformation is applied to the mesh
 - If a model is based on a primitive, use an appropriate class to load and edit it
 - Tests to make sure the UI is working correctly

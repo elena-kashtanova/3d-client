@@ -13,9 +13,9 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />}></Route>
         <Route path="models" element={<ModelLibraryPage />}></Route>
-        <Route path="models/:id" element={<EditorPage />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Route>
+      <Route path="models/:id" element={<EditorPage />}></Route>
     </Routes>
   );
 }

@@ -32,7 +32,7 @@ function ModelLibraryPage() {
   return (
     <main className="content">
       {loading && <p>Loading...</p>}
-      {error && <h1>{`Something went wrongs - ${error}`}</h1>}
+      {error && <h1>{`Something went wrong - ${error}`}</h1>}
       {data && <ModelList data={data} />}
     </main>
   );

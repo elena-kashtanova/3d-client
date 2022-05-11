@@ -21,7 +21,8 @@ a {
 }
 
 a:hover,
-.active {
+.active,
+.model:hover {
   color: #bb56ff;
 }
 
@@ -29,4 +30,17 @@ a:hover,
   display: inherit;
   justify-content: center;
   align-items: center;
+}
+
+.model-list {
+  margin: 2rem 1rem;
+  padding: 0;
+  max-width: 1200px;
+}
+
+.model {
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 1rem 0;
+  text-decoration: underline;
 }

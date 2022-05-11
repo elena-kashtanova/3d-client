@@ -1,5 +1,11 @@
+import { ModelList } from '../components/ModelList';
+
 function ModelLibraryPage() {
-  return <div>LIBRARY</div>;
+  return (
+    <main className="content">
+      <ModelList />
+    </main>
+  );
 }
 
 export { ModelLibraryPage };

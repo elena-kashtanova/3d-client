@@ -36,4 +36,18 @@ async function updateModel(modelData: IModelContext) {
   return response;
 }
 
-export { getData, updateModel };
+async function deleteModel(id: string) {
+  const url = `${process.env.REACT_APP_API_URL}/models/${id}`;
+  const response = await fetch(url, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    const message = `Something went wrong: ${response.status} - ${response.statusText}`;
+    throw new Error(message);
+  }
+
+  return response;
+}
+
+export { getData, updateModel, deleteModel };

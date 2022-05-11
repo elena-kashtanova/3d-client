@@ -1,9 +1,11 @@
-import { useParams, NavLink, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { EditorNavbar } from '../components/EditorNavbar';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { LoadingMessage } from '../components/LoadingMessage';
 import { ResultMessage } from '../components/ResultMessage';
 import { Viewport } from '../components/Viewport';
+import { Form } from '../components/Form';
 import { getData, updateModel, deleteModel } from '../utils/apiUtils';
 import { IModelContext, ModelContext } from '../components/ModelContext';
 
@@ -33,15 +35,7 @@ function EditorPage() {
       });
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const key = e.target.name;
-    let value;
-
-    if (key === 'color') {
-      value = e.target.value.replace('#', '0x');
-    }
-
-    const updatedData = Object.assign({}, data, { [key]: value });
+  const saveChangedData = (updatedData: IModelContext): void => {
     setData(updatedData);
   };
 
@@ -81,7 +75,7 @@ function EditorPage() {
 
   const handleDelete = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
+  ): Promise<void> => {
     e.preventDefault();
     setMessage('Deleting...');
 
@@ -112,39 +106,18 @@ function EditorPage() {
 
   return (
     <div className="app">
-      <nav className="navbar editor-navbar">
-        <NavLink end to="/models">
-          Back
-        </NavLink>
-      </nav>
+      <EditorNavbar />
       {message && <ResultMessage text={message} />}
       {loading && <LoadingMessage />}
       {error && <ErrorMessage errorMessage={error} />}
       <ModelContext.Provider value={data}>
         {data && <Viewport handleTransform={handleTransform} />}
         {data && (
-          <form
-            className="editor-form"
-            method="PUT"
-            action={`${process.env.REACT_APP_API_URL}/models/${id}`}
-            onSubmit={handleSubmit}
-          >
-            <label>
-              Color:
-              <input
-                type="color"
-                name="color"
-                value={data.color.replace('0x', '#')}
-                onChange={handleInputChange}
-              ></input>
-            </label>
-            <button type="submit" className="submit">
-              Save
-            </button>
-            <button type="button" className="delete" onClick={handleDelete}>
-              Delete Model
-            </button>
-          </form>
+          <Form
+            handleDelete={handleDelete}
+            handleSubmit={handleSubmit}
+            saveChangedData={saveChangedData}
+          />
         )}
       </ModelContext.Provider>
     </div>

@@ -45,6 +45,11 @@ function EditorPage() {
     setData(updatedData);
   };
 
+  const handleTransform = (updateData: Partial<IModelContext>) => {
+    const newData = Object.assign({}, data, updateData);
+    setData(newData);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMessage('Saving...');
@@ -113,7 +118,7 @@ function EditorPage() {
       {loading && <LoadingMessage />}
       {error && <ErrorMessage errorMessage={error} />}
       <ModelContext.Provider value={data}>
-        {data && <Viewport />}
+        {data && <Viewport handleTransform={handleTransform} />}
         {data && (
           <form
             className="editor-form"
@@ -131,7 +136,7 @@ function EditorPage() {
               ></input>
             </label>
             <button type="submit" className="submit">
-              Submit
+              Save
             </button>
             <button type="button" className="delete" onClick={handleDelete}>
               Delete Model

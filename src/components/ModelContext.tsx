@@ -5,10 +5,10 @@ interface IModelContext {
   name: string;
   type: string;
   color: string;
-  position: number[];
-  uv: number[];
-  normal: number[];
-  index: number[];
+  position: Float32Array | Array<number>;
+  uv: Float32Array | Array<number>;
+  normal: Float32Array | Array<number>;
+  index: Uint32Array | Array<number>;
   parameters: { [key: string]: any } | null;
 }
 

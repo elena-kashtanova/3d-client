@@ -18,18 +18,7 @@
 ## Three.js
 I'm using react-three-fiber and react-three-drei to make it easier to render objects and to interact with them.
 
-## Rendering error on transform
-When the mesh is transformed and the changes are applied to the matrix, there's a rendering bug which causes the mesh points to jump to a different position.
-
-It might be an issue due to information about scale not being used in the model data. Fixing it would require changing the database model.
-
-UPDATE: Fixed by resetting the scale of the mesh back to one after transformation is applied
-
-## Color update bug
-If the color is changed and then the mesh is transformed, the color reverts back to the original
-
 ## Opportunities for improvement
-- Fix the bug on color update (UPDATE: Fixed)
 - If a model is based on a primitive, use an appropriate class to load and edit it
 - Tests to make sure the UI is working correctly
 - Use aliases for imports
